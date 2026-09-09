@@ -30,8 +30,17 @@ source .venv/bin/activate
 src/mgt409/        Reusable helpers (statistics utilities), importable as `mgt409`
 tests/             Pytest test suite
 scripts/           Runnable analysis scripts
-.cursor/           Cloud Agent environment config + install script
+notebooks/         Jupyter notebooks (demo.ipynb)
+.cursor/           Cloud Agent environment config + install/start scripts
 ```
+
+### Cloud Agent environment
+
+`.cursor/environment.json` drives the Cloud Agent setup:
+
+- `install` (`.cursor/install.sh`) — installs `python3.12-venv`, creates `.venv`, and installs dependencies. Idempotent.
+- `start` (`.cursor/start.sh`) — per-boot check that recreates `.venv` if a fresh pod boots without it (environment builds don't re-run `install`).
+- `jupyter` terminal — serves Jupyter Lab on port 8888.
 
 ## Adding an assignment
 
