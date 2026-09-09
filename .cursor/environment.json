@@ -1,0 +1,13 @@
+{
+  "name": "MGT 409 Homework",
+  "user": "ubuntu",
+  "install": "bash .cursor/install.sh",
+  "start": "bash .cursor/start.sh",
+  "terminals": [
+    {
+      "name": "jupyter",
+      "command": ".venv/bin/jupyter lab --no-browser --ip=0.0.0.0 --port=8888 --ServerApp.token='' --ServerApp.password=''"
+    }
+  ],
+  "ports": [8888]
+}
