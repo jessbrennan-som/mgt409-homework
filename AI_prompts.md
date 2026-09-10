@@ -19,11 +19,11 @@ Record of prompts typed in my own words as homework problems are worked.
 
 - ok good now we need to handle the Jan. bank statement. each line needs a business or personal category and an accounting category so i can reconcile it with reciepts and credit card charges. Please create a script called read_bank.py that calls an LLM using the prompt in bank_extract.md from bankstatement_jan2026.pdf, then save a json array of those rows to output/bank_transactions.json. (Let me know if you can't find anything i'm referencing.) Each bank line must include: date (posting or transaction date), a description (text shown on the statement), amount_usd (the dollar amount, a positive number only), classification (busienss or personal), direction / credit (money in) or debit (money out), accounting_label (what kind of work this is; rent, utilities, cogs_parts) and omit null or otherwise. please run it with the command format python read_bank.py --docs-dir PATH --out-dir output. If i'm giving you too much information please let me know, i'm really new at this. ALSO, this goes under problem 3 and make sure you're tracking my prompts please
 
-## Problem 4: [Title TBD]
+## Problem 4: Credit card transactions
 
 ### Prompts
 
-- _(add the prompt you type in your own words here before we start this problem)_
+- ok here comes #4. we need to extract some credit card transactions to fully reconcile them in the next step to come, because the credit card statmenet overlaps with receipts but uses categories that are too broad for us. please create a script read_card.py that calls an LLM using the prompt in prompts/card_extract.md to pull each charge from credit_card_jan2026.pdf, and save a json array of those rows to output/credit_card_transactions.json. each charge must include date (the charge date), merchant (the name on the statement), amount_usd (charge amount in dollars), classification (business or personal), expense_category (business expense label for shop charges; use null for personal rows) Script shoudl run with: python read_card.py --docs-dir PATH --out-dir output
 
 ## Problem 5: [Title TBD]
 
