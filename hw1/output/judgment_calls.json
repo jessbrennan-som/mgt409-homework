@@ -1,0 +1,26 @@
+[
+  {
+    "transaction_id": "txn_mike_smith_iou_180",
+    "reconciliation_id": "mike_smith_unpaid_iou",
+    "included_in_income_statement": 180.0,
+    "amount_used_in_income_statement": 180.0,
+    "confidence_level": "medium",
+    "student_decision": "Keep as-is: book $180 January revenue (receivable). Confidence set to medium."
+  },
+  {
+    "transaction_id": "txn_rei_jacket_156",
+    "reconciliation_id": "rei_high_vis_outerwear_business_judgment",
+    "included_in_income_statement": 0.0,
+    "amount_used_in_income_statement": 0.0,
+    "confidence_level": "medium",
+    "student_decision": "Take the jacket out of business expenses; count as personal. Amount used on income statement is $0."
+  },
+  {
+    "transaction_id": "txn_amazon_headphones_89_99",
+    "reconciliation_id": "amazon_headphones_personal",
+    "included_in_income_statement": 0.0,
+    "amount_used_in_income_statement": 0.0,
+    "confidence_level": "medium",
+    "student_decision": "Keep headphones excluded as personal. Confidence set to medium."
+  }
+]

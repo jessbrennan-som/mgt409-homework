@@ -1,0 +1,183 @@
+[
+  {
+    "id": "park_tool_card_vs_receipt",
+    "sources": [
+      "receipt_park_tool.pdf",
+      "credit_card_jan2026.pdf"
+    ],
+    "amounts_seen": {
+      "receipt_park_tool.pdf": 88.7,
+      "credit_card_jan2026.pdf": 127.4
+    },
+    "included_in_income_statement": 127.4,
+    "resolution": "The $88.70 receipt is only the initial shipment. The $127.40 card charge includes the receipt items plus the $38.70 back-ordered spanner shipped later, so book the full card charge once."
+  },
+  {
+    "id": "amazon_headphones_personal",
+    "sources": [
+      "receipt_amazon_headphones.pdf",
+      "credit_card_jan2026.pdf",
+      "email_owner_voice_memo.txt"
+    ],
+    "amounts_seen": {
+      "receipt_amazon_headphones.pdf": 89.99,
+      "credit_card_jan2026.pdf": 89.99
+    },
+    "included_in_income_statement": 0.0,
+    "resolution": "The receipt matches the January 4 card charge, but the owner identified the headphones as personal commute headphones. Exclude the charge from business expenses."
+  },
+  {
+    "id": "ebay_repair_stand_card_vs_order",
+    "sources": [
+      "ebay_repair_stand.pdf",
+      "credit_card_jan2026.pdf"
+    ],
+    "amounts_seen": {
+      "ebay_repair_stand.pdf": 425.0,
+      "credit_card_jan2026.pdf": 425.0
+    },
+    "included_in_income_statement": 425.0,
+    "resolution": "The eBay order ID, date, amount, and card ending match. Book the $425 shop equipment purchase once, not twice."
+  },
+  {
+    "id": "speedy_courier_receipt_vs_card",
+    "sources": [
+      "receipt_courier.pdf",
+      "credit_card_jan2026.pdf",
+      "email_owner_voice_memo.txt"
+    ],
+    "amounts_seen": {
+      "receipt_courier.pdf": 28.0,
+      "credit_card_jan2026.pdf": 28.0
+    },
+    "included_in_income_statement": 28.0,
+    "resolution": "The receipt for emergency tube delivery matches the $28 card charge. Count the shipping expense once."
+  },
+  {
+    "id": "home_depot_receipt_vs_card",
+    "sources": [
+      "receipt_home_depot.pdf",
+      "credit_card_jan2026.pdf",
+      "email_owner_voice_memo.txt"
+    ],
+    "amounts_seen": {
+      "receipt_home_depot.pdf": 67.12,
+      "credit_card_jan2026.pdf": 67.12
+    },
+    "included_in_income_statement": 67.12,
+    "resolution": "The receipt matches the card charge, and the owner confirmed the bins, broom, and dust pan were for the shop. Book the purchase once as a business expense."
+  },
+  {
+    "id": "nhbp_counter_order_card_vs_receipt",
+    "sources": [
+      "receipt_nhbp_parts.pdf",
+      "credit_card_jan2026.pdf"
+    ],
+    "amounts_seen": {
+      "receipt_nhbp_parts.pdf": 218.4,
+      "credit_card_jan2026.pdf": 218.4
+    },
+    "included_in_income_statement": 218.4,
+    "resolution": "The January 19 counter invoice matches the $218.40 card charge. Book this separate parts order once."
+  },
+  {
+    "id": "nhbp_separate_wholesale_check",
+    "sources": [
+      "bank_statement_jan2026.pdf",
+      "email_owner_voice_memo.txt",
+      "receipt_nhbp_parts.pdf"
+    ],
+    "amounts_seen": {
+      "bank_statement_jan2026.pdf": 742.18,
+      "email_owner_voice_memo.txt": 742.18,
+      "receipt_nhbp_parts.pdf": 742.18
+    },
+    "included_in_income_statement": 742.18,
+    "resolution": "The $742.18 check was a separate wholesale restock order, distinct from the $218.40 card-paid counter invoice. Book the check-paid order separately and do not combine it with the card order."
+  },
+  {
+    "id": "square_mixed_personal_deposit",
+    "sources": [
+      "bank_statement_jan2026.pdf",
+      "email_owner_voice_memo.txt"
+    ],
+    "amounts_seen": {
+      "bank_statement_jan2026.pdf": 560.0,
+      "email_owner_voice_memo.txt": 95.0
+    },
+    "included_in_income_statement": 465.0,
+    "resolution": "The January 15 Square deposit was $560, but $95 was the roommate's personal tune-up. Reduce business sales revenue to $465."
+  },
+  {
+    "id": "rei_high_vis_outerwear_business_judgment",
+    "sources": [
+      "credit_card_jan2026.pdf",
+      "email_owner_voice_memo.txt"
+    ],
+    "amounts_seen": {
+      "credit_card_jan2026.pdf": 156.0,
+      "email_owner_voice_memo.txt": 156.0
+    },
+    "included_in_income_statement": 0.0,
+    "resolution": "Owner memo argues the high-vis jacket is for on-site fleet work, but after student review this charge is treated as a personal expense and excluded from the January income statement ($0)."
+  },
+  {
+    "id": "mike_smith_unpaid_iou",
+    "sources": [
+      "iou_mike_smith.pdf",
+      "email_owner_voice_memo.txt"
+    ],
+    "amounts_seen": {
+      "iou_mike_smith.pdf": 180.0,
+      "email_owner_voice_memo.txt": 180.0
+    },
+    "included_in_income_statement": 180.0,
+    "resolution": "The signed January 15 IOU documents a completed tune-up and brake-pad sale. Record $180 of January revenue with a receivable even though payment is due in February and is not yet in the bank."
+  },
+  {
+    "id": "january_cam_not_invoiced",
+    "sources": [
+      "lease_jan2026.pdf"
+    ],
+    "amounts_seen": {
+      "lease_jan2026.pdf": 125.0
+    },
+    "included_in_income_statement": 0.0,
+    "resolution": "January CAM is estimated at $125 but was not invoiced and is expected on the February statement. Exclude it from the January income statement."
+  },
+  {
+    "id": "hartford_mutual_future_contract",
+    "sources": [
+      "quote_hartford_mutual_fleet.pdf",
+      "email_fleet_wellness.txt"
+    ],
+    "amounts_seen": {
+      "quote_hartford_mutual_fleet.pdf": 6593.7,
+      "email_fleet_wellness.txt": 6800.0
+    },
+    "included_in_income_statement": 0.0,
+    "resolution": "The quote totals $6,593.70 including tax, while the customer email references a rounded $6,800 budget. The work and payment are scheduled for March and February/March, so neither amount is January revenue."
+  },
+  {
+    "id": "wedding_ebike_future_work",
+    "sources": [
+      "email_wedding_ebikes.txt"
+    ],
+    "amounts_seen": {
+      "email_wedding_ebikes.txt": 5600.0
+    },
+    "included_in_income_statement": 0.0,
+    "resolution": "The $5,600 estimate concerns a June event, is not yet booked, and has no deposit. Exclude it from January revenue."
+  },
+  {
+    "id": "yale_cycling_club_future_work",
+    "sources": [
+      "email_yale_cycling_club.txt"
+    ],
+    "amounts_seen": {
+      "email_yale_cycling_club.txt": 2400.0
+    },
+    "included_in_income_statement": 0.0,
+    "resolution": "The $2,400 preseason tune-up proposal has no January deposit and is scheduled for February. The possible rush-bike surcharge is not confirmed, so neither amount is January revenue."
+  }
+]
