@@ -53,7 +53,6 @@ def call_llm(client: OpenAI, system_prompt: str, user_content: str) -> str:
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_content},
         ],
-        temperature=0,
         max_completion_tokens=800,
     )
     return (resp.choices[0].message.content or "").strip()
