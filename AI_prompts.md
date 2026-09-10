@@ -31,11 +31,11 @@ Record of prompts typed in my own words as homework problems are worked.
 
 - ok problem 5 - we are going to reconcile, since some purchases appear in a couple pleaces and a bunch of stuff is mixed up or hard to identify. Create a script reconcile.py using prompt in prompts/reconcile.md. i want it to reconcile amounts that appear in more than one doc or need a single income-statement decision. each row in the log is one reconciled amount; not every raw line from earlier problems. Pass in output/receipts.json, output/bank_transactions.json, output/credit_card_transactions.json, plus text from relevant docs, then save a JSON array of rows to output/reconciliation_log.json. each row must have an id (slug for recociled item like park_tool_card_vs_receipt), sources (list od doc filenames we used for that row), amounts_seen (object mapping each source filename to the dollar amt seen in that doc (for example "receipt_park_tool.pdf": 88.7), included_in_income_statement (the dollar amt to book after reconciliation and use 0 if excluded), resolution (plain easy english describing how you matched docs and chose that final amount). The script shoudl run with this command: python reconcile.py --docs-dir PATH --json-dir output --out-dir output
 
-## Problem 6: [Title TBD]
+## Problem 6: Judgment calls / confidence review
 
 ### Prompts
 
-- _(add the prompt you type in your own words here before we start this problem)_
+- ok giddyup, #6 coming at you. what has been coded under resolution? i need to look for items that could be questionable. what were the calls where you weighed evidence and had some level of confidence about judgemnet calls? please identify rows that you identified as hi/med/low confidence then ask me about the judgemnet calls - at least 3 rows from the reconciliation log - and let me have the final say. then record my response in the json for the professor. at least one has to be low confidence. for each use the transaction id, reconciliation id, included_in_income_statement, amount_used_in_income_statment and confidence level
 
 ## Problem 7: [Title TBD]
 
