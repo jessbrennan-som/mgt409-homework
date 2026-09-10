@@ -51,8 +51,8 @@ Record of prompts typed in my own words as homework problems are worked.
 - i need a one-page HTML summary using script report.py that takes my outputs and uses same numbers as json. save it to output/income_statement.html. the page needs to make it easy for humans to understand what's going on. it has to include ht ejanuary income statment, personal and business rows we excluded from the income statement and the three judgemnet calls i made in problem 6.
 - oh wait i have a command format if you need it: python report.py --json-dir output --out output/income_statement.html
 
-## Problem 9: [Title TBD]
+## Problem 9: Pipeline diagram
 
 ### Prompts
 
-- _(add the prompt you type in your own words here before we start this problem)_
+- ok i need a one page html file output/pipeline.html that creates a diagram of thsi whole process, one block per question or step. i need blocks for key inputs, arrows from scripts to outputs and some notation of where LLM was used. please title each script and what it reads and writes. I need to visualize the path from the zip file to an income statement
