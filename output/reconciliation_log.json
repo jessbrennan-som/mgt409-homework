@@ -118,8 +118,8 @@
       "credit_card_jan2026.pdf": 156.0,
       "email_owner_voice_memo.txt": 156.0
     },
-    "included_in_income_statement": 156.0,
-    "resolution": "Although the card extract classified the REI purchase as personal, the owner states the high-vis jacket was required for on-site business fleet work. Treat the $156 charge as a business expense."
+    "included_in_income_statement": 0.0,
+    "resolution": "Owner memo argues the high-vis jacket is for on-site fleet work, but after student review this charge is treated as a personal expense and excluded from the January income statement ($0)."
   },
   {
     "id": "mike_smith_unpaid_iou",
