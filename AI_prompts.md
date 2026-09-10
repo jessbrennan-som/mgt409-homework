@@ -44,11 +44,12 @@ Record of prompts typed in my own words as homework problems are worked.
 
 - ok great, now for the next step, #7. we need a script income_statment.py that reads the reconciliation log and takes evyerhing that is classified as revenue or expense and puts it into the january income statement. math can be python but use inputs from our reconciliation step. we need to include hte period (2026-01), revenue in dollars, labeled expense lines , amount, category, sources, total_expenses and net_income. script should be python income_statement.py --json-dir output --out-dir output
 
-## Problem 8: [Title TBD]
+## Problem 8: One-page HTML report
 
 ### Prompts
 
-- _(add the prompt you type in your own words here before we start this problem)_
+- i need a one-page HTML summary using script report.py that takes my outputs and uses same numbers as json. save it to output/income_statement.html. the page needs to make it easy for humans to understand what's going on. it has to include ht ejanuary income statment, personal and business rows we excluded from the income statement and the three judgemnet calls i made in problem 6.
+- oh wait i have a command format if you need it: python report.py --json-dir output --out output/income_statement.html
 
 ## Problem 9: [Title TBD]
 
