@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spoke &amp; Wrench — January 2026 Income Statement Summary</title>
+  <style>
+    :root {
+      --ink: #1c1917;
+      --muted: #57534e;
+      --line: #d6d3d1;
+      --bg: #fafaf9;
+      --card: #ffffff;
+      --accent: #0f766e;
+      --neg: #b91c1c;
+      --pos: #047857;
+      --soft: #f5f5f4;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #ecfdf5 0%, var(--bg) 220px);
+      line-height: 1.35;
+    }
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 2rem;
+    }
+    header {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1rem 1.15rem;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      margin: 0 0 0.25rem;
+      font-size: 1.45rem;
+      letter-spacing: -0.02em;
+    }
+    .subtitle { color: var(--muted); margin: 0; font-size: 0.95rem; }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
+      margin-top: 0.9rem;
+    }
+    .kpi {
+      background: var(--soft);
+      border-radius: 10px;
+      padding: 0.7rem 0.8rem;
+    }
+    .kpi .label {
+      color: var(--muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .kpi .value { font-size: 1.25rem; font-weight: 700; margin-top: 0.15rem; }
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.9rem 1rem 1rem;
+      margin-bottom: 0.85rem;
+    }
+    h2 {
+      margin: 0 0 0.55rem;
+      font-size: 1.05rem;
+      color: var(--accent);
+    }
+    p.note { margin: 0 0 0.6rem; color: var(--muted); font-size: 0.9rem; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 0.4rem 0.35rem;
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      color: var(--muted);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      font-weight: 600;
+    }
+    td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    td.sources { color: var(--muted); font-size: 0.8rem; }
+    tfoot td {
+      font-weight: 700;
+      border-bottom: none;
+      padding-top: 0.55rem;
+    }
+    .neg { color: var(--neg); }
+    .pos { color: var(--pos); }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+    }
+    @media (max-width: 800px) {
+      .kpis, .grid-2 { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { background: white; }
+      main { max-width: none; padding: 0; }
+      section, header { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Spoke &amp; Wrench — January 2026 summary</h1>
+      <p class="subtitle">One-page report from reconciled homework outputs. All dollar amounts match the JSON files.</p>
+      <div class="kpis">
+        <div class="kpi"><div class="label">Period</div><div class="value">2026-01</div></div>
+        <div class="kpi"><div class="label">Revenue</div><div class="value">$645.00</div></div>
+        <div class="kpi"><div class="label">Net income</div><div class="value neg">-$963.10</div></div>
+      </div>
+    </header>
+
+    <section>
+      <h2>1. January income statement</h2>
+      <p class="note">Built from <code>income_statement.json</code> using only reconciliation rows booked to the P&amp;L.</p>
+      <table>
+        <thead>
+          <tr><th>Revenue line</th><th>Category</th><th class="num">Amount</th><th>Sources</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Square walk-in sales (net of personal)</td><td>sales_revenue</td><td class='num'>$465.00</td><td class='sources'>bank_statement_jan2026.pdf, email_owner_voice_memo.txt</td></tr>
+<tr><td>Mike Smith tune-up receivable</td><td>service_revenue</td><td class='num'>$180.00</td><td class='sources'>iou_mike_smith.pdf, email_owner_voice_memo.txt</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="2">Total revenue</td><td class="num">$645.00</td><td></td></tr>
+        </tfoot>
+      </table>
+      <table style="margin-top:0.75rem;">
+        <thead>
+          <tr><th>Expense line</th><th>Category</th><th class="num">Amount</th><th>Sources</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Park Tool tools (full card charge)</td><td>tools_equipment</td><td class='num'>$127.40</td><td class='sources'>receipt_park_tool.pdf, credit_card_jan2026.pdf</td></tr>
+<tr><td>eBay Park Tool repair stand</td><td>tools_equipment</td><td class='num'>$425.00</td><td class='sources'>ebay_repair_stand.pdf, credit_card_jan2026.pdf</td></tr>
+<tr><td>Speedy Courier emergency delivery</td><td>shipping</td><td class='num'>$28.00</td><td class='sources'>receipt_courier.pdf, credit_card_jan2026.pdf, email_owner_voice_memo.txt</td></tr>
+<tr><td>Home Depot shop supplies</td><td>shop_supplies</td><td class='num'>$67.12</td><td class='sources'>receipt_home_depot.pdf, credit_card_jan2026.pdf, email_owner_voice_memo.txt</td></tr>
+<tr><td>NH Bike Parts counter invoice</td><td>cogs_parts</td><td class='num'>$218.40</td><td class='sources'>receipt_nhbp_parts.pdf, credit_card_jan2026.pdf</td></tr>
+<tr><td>NH Bike Parts wholesale restock</td><td>cogs_parts</td><td class='num'>$742.18</td><td class='sources'>bank_statement_jan2026.pdf, email_owner_voice_memo.txt, receipt_nhbp_parts.pdf</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="2">Total expenses</td><td class="num">$1,608.10</td><td></td></tr>
+          <tr><td colspan="2">Net income</td><td class="num neg">-$963.10</td><td></td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <section>
+      <h2>2. Rows excluded from the income statement</h2>
+      <p class="note">These reconciliation items have <code>included_in_income_statement = 0</code>. Doc amounts are what appeared in source files; booked stays $0.00.</p>
+      <div class="grid-2">
+        <div>
+          <h2 style="font-size:0.95rem;">Personal exclusions</h2>
+          <table>
+            <thead>
+              <tr><th>Item</th><th class="num">Doc amount</th><th class="num">Booked</th><th>Why excluded</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>amazon_headphones_personal</td><td class='num'>$89.99</td><td class='num'>$0.00</td><td>The receipt matches the January 4 card charge, but the owner identified the headphones as personal commute headphones. Exclude the charge from business expenses.</td></tr>
+<tr><td>rei_high_vis_outerwear_business_judgment</td><td class='num'>$156.00</td><td class='num'>$0.00</td><td>Owner memo argues the high-vis jacket is for on-site fleet work, but after student review this charge is treated as a personal expense and excluded from the January income statement ($0).</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h2 style="font-size:0.95rem;">Business exclusions</h2>
+          <table>
+            <thead>
+              <tr><th>Item</th><th class="num">Doc amount</th><th class="num">Booked</th><th>Why excluded</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>wedding_ebike_future_work</td><td class='num'>$5,600.00</td><td class='num'>$0.00</td><td>The $5,600 estimate concerns a June event, is not yet booked, and has no deposit. Exclude it from January revenue.</td></tr>
+<tr><td>yale_cycling_club_future_work</td><td class='num'>$2,400.00</td><td class='num'>$0.00</td><td>The $2,400 preseason tune-up proposal has no January deposit and is scheduled for February. The possible rush-bike surcharge is not confirmed, so neither amount is January revenue.</td></tr>
+<tr><td>hartford_mutual_future_contract</td><td class='num'>$6,800.00</td><td class='num'>$0.00</td><td>The quote totals $6,593.70 including tax, while the customer email references a rounded $6,800 budget. The work and payment are scheduled for March and February/March, so neither amount is January revenue.</td></tr>
+<tr><td>january_cam_not_invoiced</td><td class='num'>$125.00</td><td class='num'>$0.00</td><td>January CAM is estimated at $125 but was not invoiced and is expected on the February statement. Exclude it from the January income statement.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>3. Problem 6 judgment calls (student final say)</h2>
+      <p class="note">From <code>judgment_calls.json</code>. All three reviewed at medium confidence; REI jacket moved to personal.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Transaction id</th>
+            <th>Reconciliation id</th>
+            <th class="num">Included</th>
+            <th class="num">Amount used</th>
+            <th>Confidence</th>
+            <th>Student decision</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>txn_mike_smith_iou_180</td><td>mike_smith_unpaid_iou</td><td class='num'>$180.00</td><td class='num'>$180.00</td><td>medium</td><td>Keep as-is: book $180 January revenue (receivable). Confidence set to medium.</td></tr>
+<tr><td>txn_rei_jacket_156</td><td>rei_high_vis_outerwear_business_judgment</td><td class='num'>$0.00</td><td class='num'>$0.00</td><td>medium</td><td>Take the jacket out of business expenses; count as personal. Amount used on income statement is $0.</td></tr>
+<tr><td>txn_amazon_headphones_89_99</td><td>amazon_headphones_personal</td><td class='num'>$0.00</td><td class='num'>$0.00</td><td>medium</td><td>Keep headphones excluded as personal. Confidence set to medium.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

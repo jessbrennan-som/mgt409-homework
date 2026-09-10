@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spoke &amp; Wrench — Homework Pipeline (Zip → Income Statement)</title>
+  <style>
+    :root {
+      --ink: #1c1917;
+      --muted: #57534e;
+      --line: #d6d3d1;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --input: #eff6ff;
+      --input-border: #93c5fd;
+      --script: #ecfdf5;
+      --script-border: #34d399;
+      --llm: #fef3c7;
+      --llm-border: #f59e0b;
+      --output: #f5f3ff;
+      --output-border: #a78bfa;
+      --human: #fff7ed;
+      --human-border: #fb923c;
+      --final: #e0f2fe;
+      --final-border: #0ea5e9;
+      --arrow: #64748b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, #dbeafe 0, transparent 35%),
+        radial-gradient(circle at top right, #d1fae5 0, transparent 30%),
+        var(--bg);
+      line-height: 1.35;
+    }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 2rem;
+    }
+    header {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      margin: 0 0 0.3rem;
+      font-size: 1.45rem;
+      letter-spacing: -0.02em;
+    }
+    .subtitle { margin: 0; color: var(--muted); }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.85rem;
+    }
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.25rem 0.65rem;
+      font-size: 0.8rem;
+      background: #fff;
+    }
+    .swatch {
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    .row.triple {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .row.dual {
+      grid-template-columns: 1.2fr 1fr;
+    }
+    .block {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.8rem 0.9rem;
+      box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
+    }
+    .block.input { background: var(--input); border-color: var(--input-border); }
+    .block.script { background: var(--script); border-color: var(--script-border); }
+    .block.llm { background: var(--llm); border-color: var(--llm-border); }
+    .block.output { background: var(--output); border-color: var(--output-border); }
+    .block.human { background: var(--human); border-color: var(--human-border); }
+    .block.final { background: var(--final); border-color: var(--final-border); }
+    .eyebrow {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+      font-weight: 600;
+    }
+    .title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 0.35rem;
+    }
+    .meta {
+      margin: 0;
+      font-size: 0.86rem;
+      color: var(--ink);
+    }
+    .meta strong { font-weight: 600; }
+    .badge {
+      display: inline-block;
+      margin-top: 0.45rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.18rem 0.45rem;
+      border-radius: 999px;
+      background: #fff7ed;
+      border: 1px solid #fdba74;
+      color: #9a3412;
+    }
+    .badge.python {
+      background: #ecfeff;
+      border-color: #67e8f9;
+      color: #155e75;
+    }
+    .badge.human {
+      background: #fff1f2;
+      border-color: #fda4af;
+      color: #9f1239;
+    }
+    .arrow {
+      text-align: center;
+      color: var(--arrow);
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0.1rem 0;
+    }
+    .arrow-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 0.1rem;
+    }
+    .scripts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+    .path-note {
+      margin-top: 0.85rem;
+      background: var(--card);
+      border: 1px dashed var(--line);
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.84em;
+      background: rgba(255,255,255,0.7);
+      padding: 0.05rem 0.28rem;
+      border-radius: 4px;
+    }
+    @media (max-width: 900px) {
+      .row.triple, .row.dual, .scripts-grid { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { background: white; }
+      main { max-width: none; padding: 0; }
+      .block, header { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Spoke &amp; Wrench homework pipeline</h1>
+      <p class="subtitle">Path from the uploaded document-pack zip to the January income statement — one block per step.</p>
+      <div class="legend">
+        <span><i class="swatch" style="background:#eff6ff;border-color:#93c5fd;"></i> Inputs</span>
+        <span><i class="swatch" style="background:#ecfdf5;border-color:#34d399;"></i> Scripts</span>
+        <span><i class="swatch" style="background:#fef3c7;border-color:#f59e0b;"></i> LLM used</span>
+        <span><i class="swatch" style="background:#f5f3ff;border-color:#a78bfa;"></i> Outputs</span>
+        <span><i class="swatch" style="background:#fff7ed;border-color:#fb923c;"></i> Human judgment</span>
+        <span><i class="swatch" style="background:#e0f2fe;border-color:#0ea5e9;"></i> Final deliverables</span>
+      </div>
+    </header>
+
+    <div class="flow">
+      <!-- Setup / inputs -->
+      <div class="row dual">
+        <div class="block input">
+          <div class="eyebrow">Problem 1 · Setup</div>
+          <p class="title">Project folders + prompt log</p>
+          <p class="meta"><strong>Creates:</strong> <code>prompts/</code>, <code>output/</code>, <code>AI_prompts.md</code></p>
+          <p class="meta"><strong>Purpose:</strong> organize one script per problem and record prompts in your own words.</p>
+        </div>
+        <div class="block input">
+          <div class="eyebrow">Key input</div>
+          <p class="title">Document-pack zip → <code>docs_pack/</code></p>
+          <p class="meta"><strong>Contains:</strong> <code>pdfs/</code> (bank, card, receipts, lease, quote, IOU, eBay), <code>emails/</code>, <code>manifest.json</code></p>
+          <p class="meta"><strong>Reads as:</strong> <code>--docs-dir docs_pack</code> (unzipped pack)</p>
+        </div>
+      </div>
+
+      <div class="arrow">↓<span class="arrow-label">extract source data</span></div>
+
+      <!-- Problems 2-4 -->
+      <div class="scripts-grid">
+        <div class="block llm">
+          <div class="eyebrow">Problem 2 · LLM</div>
+          <p class="title"><code>read_receipts.py</code></p>
+          <p class="meta"><strong>Prompt:</strong> <code>prompts/receipts_extract.md</code></p>
+          <p class="meta"><strong>Reads:</strong> purchase-receipt PDFs in <code>docs_pack/pdfs/</code></p>
+          <p class="meta"><strong>Writes:</strong> <code>output/receipts.json</code></p>
+          <span class="badge">LLM extraction</span>
+        </div>
+        <div class="block llm">
+          <div class="eyebrow">Problem 3 · LLM</div>
+          <p class="title"><code>read_bank.py</code></p>
+          <p class="meta"><strong>Prompt:</strong> <code>prompts/bank_extract.md</code></p>
+          <p class="meta"><strong>Reads:</strong> <code>bank_statement_jan2026.pdf</code></p>
+          <p class="meta"><strong>Writes:</strong> <code>output/bank_transactions.json</code></p>
+          <span class="badge">LLM extraction</span>
+        </div>
+        <div class="block llm">
+          <div class="eyebrow">Problem 4 · LLM</div>
+          <p class="title"><code>read_card.py</code></p>
+          <p class="meta"><strong>Prompt:</strong> <code>prompts/card_extract.md</code></p>
+          <p class="meta"><strong>Reads:</strong> <code>credit_card_jan2026.pdf</code></p>
+          <p class="meta"><strong>Writes:</strong> <code>output/credit_card_transactions.json</code></p>
+          <span class="badge">LLM extraction</span>
+        </div>
+      </div>
+
+      <div class="arrow">↓<span class="arrow-label">json extracts + original docs</span></div>
+
+      <!-- Problem 5 -->
+      <div class="row dual">
+        <div class="block llm">
+          <div class="eyebrow">Problem 5 · LLM</div>
+          <p class="title"><code>reconcile.py</code></p>
+          <p class="meta"><strong>Prompt:</strong> <code>prompts/reconcile.md</code></p>
+          <p class="meta"><strong>Reads:</strong> <code>receipts.json</code>, <code>bank_transactions.json</code>, <code>credit_card_transactions.json</code>, plus relevant PDF/email text</p>
+          <p class="meta"><strong>Writes:</strong> <code>output/reconciliation_log.json</code></p>
+          <span class="badge">LLM reconciliation</span>
+        </div>
+        <div class="block output">
+          <div class="eyebrow">Intermediate output</div>
+          <p class="title"><code>reconciliation_log.json</code></p>
+          <p class="meta">One row per reconciled amount (not every raw line). Includes overlaps, splits, exclusions, and income-statement decisions.</p>
+        </div>
+      </div>
+
+      <div class="arrow">↓<span class="arrow-label">review questionable calls</span></div>
+
+      <!-- Problem 6 -->
+      <div class="row dual">
+        <div class="block human">
+          <div class="eyebrow">Problem 6 · Human judgment</div>
+          <p class="title">Confidence review + final say</p>
+          <p class="meta"><strong>Reads:</strong> questionable rows from <code>reconciliation_log.json</code></p>
+          <p class="meta"><strong>Writes:</strong> <code>output/judgment_calls.json</code></p>
+          <p class="meta"><strong>Example decision:</strong> REI jacket counted as personal → booked $0</p>
+          <span class="badge human">No LLM — student decision</span>
+        </div>
+        <div class="block output">
+          <div class="eyebrow">Updated books</div>
+          <p class="title">Judgment applied to reconciliation</p>
+          <p class="meta">Excluded personal items stay at $0. Kept decisions (IOU revenue, headphones personal) recorded for the professor.</p>
+        </div>
+      </div>
+
+      <div class="arrow">↓<span class="arrow-label">python math only</span></div>
+
+      <!-- Problem 7 -->
+      <div class="row dual">
+        <div class="block script">
+          <div class="eyebrow">Problem 7 · Python</div>
+          <p class="title"><code>income_statement.py</code></p>
+          <p class="meta"><strong>Reads:</strong> <code>output/reconciliation_log.json</code></p>
+          <p class="meta"><strong>Writes:</strong> <code>output/income_statement.json</code></p>
+          <p class="meta"><strong>Does:</strong> sum revenue/expense lines → <code>total_expenses</code> and <code>net_income</code> for period <code>2026-01</code></p>
+          <span class="badge python">No LLM — deterministic math</span>
+        </div>
+        <div class="block output">
+          <div class="eyebrow">P&amp;L JSON</div>
+          <p class="title"><code>income_statement.json</code></p>
+          <p class="meta">Revenue $645.00 · Expenses $1,608.10 · Net income -$963.10</p>
+        </div>
+      </div>
+
+      <div class="arrow">↓<span class="arrow-label">human-readable summary</span></div>
+
+      <!-- Problem 8 -->
+      <div class="row dual">
+        <div class="block script">
+          <div class="eyebrow">Problem 8 · Python</div>
+          <p class="title"><code>report.py</code></p>
+          <p class="meta"><strong>Reads:</strong> <code>income_statement.json</code>, <code>reconciliation_log.json</code>, <code>judgment_calls.json</code></p>
+          <p class="meta"><strong>Writes:</strong> <code>output/income_statement.html</code></p>
+          <p class="meta"><strong>Shows:</strong> January P&amp;L, personal/business exclusions, Problem 6 judgment calls</p>
+          <span class="badge python">No LLM — HTML render</span>
+        </div>
+        <div class="block final">
+          <div class="eyebrow">Final readable deliverable</div>
+          <p class="title">January income statement page</p>
+          <p class="meta"><code>output/income_statement.html</code> — same numbers as JSON, easier for humans.</p>
+        </div>
+      </div>
+
+      <div class="arrow">↓<span class="arrow-label">process map</span></div>
+
+      <!-- Problem 9 -->
+      <div class="block final">
+        <div class="eyebrow">Problem 9 · This page</div>
+        <p class="title"><code>output/pipeline.html</code></p>
+        <p class="meta"><strong>Reads:</strong> the homework process design (scripts, prompts, outputs)</p>
+        <p class="meta"><strong>Writes:</strong> this one-page diagram of the path from zip → income statement</p>
+      </div>
+    </div>
+
+    <div class="path-note">
+      <strong>End-to-end path:</strong>
+      zip pack → <code>docs_pack/</code> →
+      LLM extractors (<code>read_receipts.py</code>, <code>read_bank.py</code>, <code>read_card.py</code>) →
+      LLM reconcile (<code>reconcile.py</code>) →
+      human judgment (`judgment_calls.json`) →
+      Python P&amp;L (<code>income_statement.py</code>) →
+      HTML report (<code>report.py</code>) →
+      January income statement.
+    </div>
+  </main>
+</body>
+</html>
