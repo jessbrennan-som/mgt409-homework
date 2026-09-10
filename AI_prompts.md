@@ -25,11 +25,11 @@ Record of prompts typed in my own words as homework problems are worked.
 
 - ok here comes #4. we need to extract some credit card transactions to fully reconcile them in the next step to come, because the credit card statmenet overlaps with receipts but uses categories that are too broad for us. please create a script read_card.py that calls an LLM using the prompt in prompts/card_extract.md to pull each charge from credit_card_jan2026.pdf, and save a json array of those rows to output/credit_card_transactions.json. each charge must include date (the charge date), merchant (the name on the statement), amount_usd (charge amount in dollars), classification (business or personal), expense_category (business expense label for shop charges; use null for personal rows) Script shoudl run with: python read_card.py --docs-dir PATH --out-dir output
 
-## Problem 5: [Title TBD]
+## Problem 5: Reconcile overlapping amounts
 
 ### Prompts
 
-- _(add the prompt you type in your own words here before we start this problem)_
+- ok problem 5 - we are going to reconcile, since some purchases appear in a couple pleaces and a bunch of stuff is mixed up or hard to identify. Create a script reconcile.py using prompt in prompts/reconcile.md. i want it to reconcile amounts that appear in more than one doc or need a single income-statement decision. each row in the log is one reconciled amount; not every raw line from earlier problems. Pass in output/receipts.json, output/bank_transactions.json, output/credit_card_transactions.json, plus text from relevant docs, then save a JSON array of rows to output/reconciliation_log.json. each row must have an id (slug for recociled item like park_tool_card_vs_receipt), sources (list od doc filenames we used for that row), amounts_seen (object mapping each source filename to the dollar amt seen in that doc (for example "receipt_park_tool.pdf": 88.7), included_in_income_statement (the dollar amt to book after reconciliation and use 0 if excluded), resolution (plain easy english describing how you matched docs and chose that final amount). The script shoudl run with this command: python reconcile.py --docs-dir PATH --json-dir output --out-dir output
 
 ## Problem 6: [Title TBD]
 
